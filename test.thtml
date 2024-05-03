@@ -1,6 +1,7 @@
 <html>
 	#include "header.thtml"
 
+	<p>
 	Welcome to my website!
 
 	#include "footer.thtml"
