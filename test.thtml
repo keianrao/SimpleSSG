@@ -1,0 +1,11 @@
+<html>
+	#include "header.thtml"
+
+	Welcome to my website!
+
+	#include "footer.thtml"
+
+	<style>
+	#include "happy.css"
+	</style>
+</html>

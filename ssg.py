@@ -22,20 +22,22 @@ def handle_file(filename):
 		return;
 	
 	with open(filename, "r") as ifile:
-		ofilename = change_extension(filename, ".html");
+		ofilename = change_extension(filename, "html");
 		with open(ofilename, "w") as ofile:
 			fill_template(ifile, ofile);
 
 
 def fill_template(ifile, ofile):
-	include_pat = re.compile("^#include \"(.*)\"$");
+	include_pat = re.compile("^(\s*)#include \"(.*)\"$");
 	for line in ifile:
 		match = include_pat.match(line);
 		if match:
-			imfilename = match[1];
+			indent = match[1];
+			imfilename = match[2];
 			with open(imfilename, "r") as imfile:
-				for line in imfile: print(line, file=ofile);
-		else: print(line, file=ofile);
+				for line in imfile:
+					print(indent + line, file=ofile, end="");
+		else: print(line, file=ofile, end="");
 	
 	
 def change_extension(filename, new_ext):
